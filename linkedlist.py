@@ -2,6 +2,12 @@
 https://www.youtube.com/watch?v=FSsriWQ0qYE&list=PL5tcWHG-UPH112e7AN7C-fwDVPVrt0wpV&index=5
 lucidprogramming
 
+git add .
+git commit -m"..."
+git push -u origin master 
+silam
+Hen89&67Jun09
+
 """
 
 class Node:
