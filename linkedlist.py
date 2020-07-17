@@ -156,26 +156,210 @@ class LinkedList:
 
 
 
+    def reverse_iterative(self):
+        prev = None
+        curr = self.head
+
+        #A->B->C->D -> none
+
+        while curr:
+            nxt = curr.next
+            curr.next = prev    
+            prev = curr
+            curr = nxt
+        self.head = prev
+
+
+
+    def reverse_recursive(self):
+
+        def _reverse_recursive(curr, prev):
+            if not curr:
+                return prev
+
+            nxt = curr.next
+            curr.next = prev    
+            prev = curr
+            curr = nxt
+            return _reverse_recursive(curr, prev)
+
+
+        self.head = _reverse_recursive(curr = self.head, prev = None)
+
+
+    def merged_sorted_2(self, llist):
+        p = self.head
+        q = llist.head
+        s = None
+        new_head = None
+
+        if p and q:
+            if p.data <= q.data:
+                s = p 
+                p = s.next
+            else:
+                s = q 
+                q = s.next
+            new_head = s 
+
+        while p and q:
+
+            if p.data <= q.data:
+                s.next = p 
+                s = p 
+                p = s.next
+            else:
+                s.next = q
+                s = q
+                q = s.next
+        if not q:
+            s.next = p 
+        if not p:
+            s.next = q 
+
+        return new_head
+
+
+    
+
+   
+
+
+
+
+
+
+
+
+
+    def merge_sorted(self, llist):
+        S = LinkedList()
+        p = self.head
+        q = llist.head
+
+        if not p:
+            return q
+        if not q:
+            return p 
+        
+        while p and q:
+            
+            if p.data < q.data:
+                print(p.data)
+                if S:
+                    S.append(p.data)
+                    S.next = p
+
+                p = p.next
+            else:
+                print(q.data)
+                if S:
+                    S.append(q.data)
+                    S.next = q
+
+                q = q.next
+
+
+        while p:
+            S.append(p.data)
+            S.next = p
+            p = p.next
+
+
+
+        while q:
+            S.append(q.data)
+            S.next = q
+            q = q.next
+        
+        print ("====Merge sorted llists==")
+        S.print_list()
         
 
+    def remove_duplicates(self):
 
+        def Contains(q, p):
+
+            if not q:
+                return 0
+
+            print ("\nInside contain P " , p.data)
+            print ("Inside contain q ", q.data)
+            while q:
+               
+                if q.data == p.data:
+                    print ("contain same ", q.data)
+
+                    return 1
+                else:
+                    print ("contain diff " , q.data)
+
+                    q = q.next
+            return 0
+
+
+        s = LinkedList()
+               
+
+        p = self.head
+        
+        if not p.next:
+            return s
+
+        new_head = None
+
+            
+        s.append(p.data)
+        s.next = None
         
 
+        while p:
+            p = p.next
+            while p and Contains(new_head, p) == 0:
+                if not s.next:
+                    s.append(p.data)
+                    s.next = None
+                    new_head = s.head
+                
+              
+                         
+        
+        return new_head
+        
+
+            
 
 
-llist = LinkedList()
-llist.append("A")
-llist.append("B")
-llist.append("C")
-llist.append("D")
-llist.len_iterative()
 
-llist.print_list()
-print(llist.len_iterative())
-print(llist.len_recursive(llist.head))
+llist1 = LinkedList()
+llist1.append(1)
+llist1.append(3)
+llist1.append(5)
+llist1.append(5)
+llist1.append(9)
 
-llist.swap_nodes("B", "B")
+
+llist2 = LinkedList()
+llist2.append(2)
+llist2.append(4)
+llist2.append(6)
+llist2.append(8)
+
+S = LinkedList()
+#llist1.merged_sorted_2(llist2)
+llist1.remove_duplicates()
+
+
+
+#llist.reverse_recursive()
+
+#llist.print_list()
+
+#print(llist.len_iterative())
+#print(llist.len_recursive(llist.head))
+
+#llist.swap_nodes("B", "B")
 #llist.delete_node("C")
-print("Swap")
+#print("Swap")
 
-llist.print_list()
+#llist.print_list()
