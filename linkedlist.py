@@ -1,7 +1,7 @@
 """
 https://www.youtube.com/watch?v=FSsriWQ0qYE&list=PL5tcWHG-UPH112e7AN7C-fwDVPVrt0wpV&index=5
 lucidprogramming
-
+cd C:\DEVELOPMENT\python\DSa>
 git add .
 git commit -m"..."
 git push -u origin master 
@@ -282,8 +282,10 @@ class LinkedList:
         S.print_list()
         
 
+    ##############################################################################################
     def remove_duplicates(self):
 
+        ###############
         def Contains(q, p):
 
             if not q:
@@ -322,10 +324,9 @@ class LinkedList:
         while p:
             p = p.next
             while p and Contains(new_head, p) == 0:
-                if not s.next:
-                    s.append(p.data)
-                    s.next = None
-                    new_head = s.head
+                s.append(p.data)
+                s.next = None
+                new_head = s.head
                 
               
                          
@@ -339,10 +340,15 @@ class LinkedList:
 
 llist1 = LinkedList()
 llist1.append(1)
+llist1.append(1)
 llist1.append(3)
 llist1.append(5)
 llist1.append(5)
 llist1.append(9)
+llist1.append(1)
+llist1.append(1)
+llist1.append(5)
+llist1.append(8)
 
 
 llist2 = LinkedList()
